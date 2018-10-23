@@ -1,5 +1,3 @@
-#include<sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h> // for open
 #include <unistd.h> // for close
 #include <stdlib.h>
@@ -17,14 +15,14 @@ int main()
         printf("file has been opened\n");
 
     // size_t read (int fd, void* buf, size_t cnt);
-    // printf("%lu\n", read (filedesc, "hello", 40000) );
+    printf("%lu\n", read (filedesc, "hello", 40000) );
 
     // size_t write(int filedesc, const void *buf, size_t nbytes);
-    // printf("%lu\n", write(filedesc, "hello", 40000) );
+    printf("%lu\n", write(filedesc, "hello", 40000) );
 
-    filedesc = close(filedesc);
-    printf("%lu\n", filedesc);
-    if(! filedesc)
+    int num = close(filedesc);
+    printf("%d\n", num);
+    if(!num)
         printf("file has been closed\n");
 
     return 0;
